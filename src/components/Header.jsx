@@ -42,9 +42,88 @@ import Instagram from "@mui/icons-material/Instagram";
 import YouTube from "@mui/icons-material/YouTube";
 import Twitter from "@mui/icons-material/Twitter";
 
+import { styled } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import PropTypes from "prop-types";
+import CloseIcon from "@mui/icons-material/Close";
+import imgpostbackgound from "../asset/post_img.jpg"
+import Avatar from "@mui/material/Avatar";
+import img1 from "../asset/avatar.jpg";
+import { TextareaAutosize } from "@mui/material";
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialogContent-root": {
+    padding: theme.spacing(2),
+  },
+  "& .MuiDialogActions-root": {
+    padding: theme.spacing(1),
+  },
+}));
+
+const BootstrapDialogTitle = (props) => {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 10,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+
+      <Typography className="title_dialogtitle_addpost"> {children}</Typography>
+    </DialogTitle>
+  );
+};
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
 
 
 const Header = () => {
+
+  const [opendialog, setOpendialog] = React.useState(false);
+
+  const handleClickOpendialog = () => {
+    setOpendialog(true);
+  };
+  const handleClosedialog  = () => {
+    setOpendialog(false);
+  };
+
+  const [imgpost, setImgpost] = useState({
+    profileImg:
+      imgpostbackgound,
+  });
+
+  const imageHandler = (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImgpost({ profileImg: reader.result });
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
+  const { profileImg } = imgpost;
+
+
+  // ----------------------------------------------------------
 
   const [open1, setOpen1] = React.useState(false);
 
@@ -855,28 +934,79 @@ const Header = () => {
         </MenuList>
 
         <MenuList className="menulist_frame4">
+      
           <IconButton
             sx={{ borderRadius: "10px", height: "40px", marginLeft: "40px" }}
+            onClick={handleClickOpendialog}
           >
+              
             <p style={{ color: "black" }}>Add Post</p>
+         
           </IconButton>
-          {/* <KeyboardArrowDownIcon sx ={{paddingTop:"5px"}}/> */}
-
-          {/* <ListItemText className="itemtext4" sx={{ color: "black" }}>
-            <MenuList className="frame_list">
-              <G col ={1}>
-
-              <ListItemText  className="showcolor"  sx={{cursor:"pointer"}}>chauhoaivu</ListItemText>
-              <ListItemText  className="showcolor" sx={{cursor:"pointer"}}>chauhoaivu</ListItemText>
-              <ListItemText  className="showcolor" sx={{cursor:"pointer"}}>chauhoaivu</ListItemText>
-              <ListItemText  className="showcolor" sx={{cursor:"pointer"}}>TranTrieuTuan</ListItemText>
-            
-              </G>
-
-            
-            </MenuList>
-          </ListItemText> */}
+        
+       
+         
         </MenuList>
+        <BootstrapDialog
+          PaperProps={{
+            className: "frame_paper_dialog1",
+          }}
+          onClose={ handleClosedialog }
+          aria-labelledby="customized-dialog-title"
+          open={opendialog}
+        >
+          <BootstrapDialogTitle
+            id="customized-dialog-title"
+            className="title_dialogtitle_addpost"
+            onClose={ handleClosedialog }
+          >
+            Create Post
+          </BootstrapDialogTitle>
+          <DialogContent dividers>
+            <div className="Top_element_post_dialog">
+              <Avatar src={img1} />
+              <Typography className="title_name_author_addpost">
+                Cristiano Ronaldo
+              </Typography>
+            </div>
+
+            <div className=" frame_textarea_addpost_and_img">
+              <TextareaAutosize
+                className="style_frame_textare_post"
+                placeholder="What's on your mind ?"
+              ></TextareaAutosize>
+
+              <div className="frame_load_img">
+                <div className="main_frame_post">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    name="image-upload"
+                    id="input"
+                    onChange={imageHandler}
+                  />
+
+                  <label className="image_upload" htmlFor="input">
+                    <img
+                      src={profileImg}
+                      alt=""
+                      id="img"
+                      className="img_user_input_post"
+                    />
+                  </label>
+
+               
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+
+          <DialogActions className="frame_button_post_photo" >
+            <Button className="button_post_photo"   onClick={ handleClosedialog } autoFocus>
+             Add Post
+            </Button>
+          </DialogActions>
+        </BootstrapDialog>
       </div>
     );
   };
@@ -1041,7 +1171,12 @@ const Header = () => {
     <hr style={{backgroundColor:"gray",marginLeft:"-32px",width:"331px" , marginTop:"20px",fontWeight:"10"}}></hr>
 
 
-    <Button sx={{marginTop:"30px",backgroundColor:"#629CF4",color:"white"}} >create articles quickly</Button>
+    <Button sx={{marginTop:"30px",
+                
+                backgroundColor:"#629CF4",
+                color:"white"}} >
+      
+      create articles quickly</Button>
 
   
 
@@ -1079,3 +1214,20 @@ const Header = () => {
   );
 };
 export default Header;
+
+
+{/* <input
+                type="file"
+                accept="image/*"
+                name="image-upload"
+                id="input"
+                onChange={imageHandler}
+              />
+              <div className="label">
+                <label className="image_upload" htmlFor="input">
+                  <h4>Thay Đổi</h4>
+                </label>
+                <p style={{ marginTop: "20px" }}>
+                  Quản lý thông tin hồ sơ để bảo mật tài khoản
+                </p>
+              </div> */}

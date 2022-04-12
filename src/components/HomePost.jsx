@@ -609,7 +609,7 @@ const HomePost = () => {
               <div>
                 <iframe
                 className="top_img_related_post"
-                  src="https://www.youtube.com/embed/YHCyzP0pUuc"
+                  src="https://www.youtube.com/embed/WFnrNcg3DiM"
                   frameborder="0"
                   allow="autoplay; encrypted-media"
                   allowfullscreen
