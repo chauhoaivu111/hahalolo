@@ -1,19 +1,48 @@
-import React from "react";
+import React, {useState} from "react";
 import Helmet from "../components/Helmet";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { TextField } from "@mui/material";
-
 import { Button, Typography } from "@mui/material";
-
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import axios from "axios";
 
-const Login = () => {
+const SignUp = (props) => {
+
+  const [submit, Setsubmited] = useState(false)
+  const [field, setField] = useState({});
+  const onChangeHandler = (e) => {
+    setField({ ...field, [e.target.name]: e.target.value });
+  };
+  console.log("email and pass", field);
+
+  // function to handle submit
+  const handleSubmit = async () =>{
+    let token = await axios ({
+      method: "POST",
+      url: "http://localhost:3000/auth/register",
+      data: {email: field.email, password: field.password}
+    });
+    localStorage.setItem("accessToken", token.data.token);
+    console.log("tokens", token.data.token)
+
+    if ((token.data.token = true )){
+      Setsubmited(true)
+      console.log("isSubmited")
+    }
+  }
+if (submit === true){
+  props.history.push("/Login")
+  console.log("submit")
+
+}
+
+
+
   return (
-    <Helmet title="Login">
+    <Helmet title="SignUp">
       <div className="main_frame_login">
         <div className="Top_frame">
           <div className="sub_Frame">
@@ -108,6 +137,9 @@ const Login = () => {
                     className="inputtextcricle"
                     fullWidth
                     placeholder="chauhoaivu111@gmail.com"
+                    onChange={onChangeHandler}
+                    value={field.email}
+                    name="email"
                   ></TextField>
 
                   <div
@@ -126,37 +158,17 @@ const Login = () => {
                     >
                       Password
                     </Typography>
-
-                    {/* <Typography
-                      sx={{
-                        textAlign: "right",
-                        fontSize: "15px",
-                        fontWeight: "500",
-                        marginBottom: "5px",
-                      }}
-                    >
-                      {" "}
-                      <span
-                        style={{
-                          color: "#346EC6",
-                          cursor: "pointer",
-                          fontWeight: "500",
-                        }}
-                      >
-                        Forgot password?
-                      </span>
-                    </Typography> */}
                   </div>
                   <TextField
                     sx={{ display: "block", marginBottom: "30px" }}
                     className="inputtextcricle"
                     fullWidth
+                    onChange={onChangeHandler}
+                    name="password"
+                    value={field.password}
                   ></TextField>
 
-                  <Button
-                   className="button_login"
-                    fullWidth
-                  >
+                  <Button className="button_SignUp" fullWidth onClick={handleSubmit}>
                     Continue
                   </Button>
 
@@ -191,4 +203,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

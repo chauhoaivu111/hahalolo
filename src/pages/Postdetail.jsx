@@ -34,9 +34,9 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import G from "../components/Grid";
 import View from "../components/View";
 import Body from "../components/Body";
-import Addcomment from "../components/Addcomment";
+
 import Comment from "../components/Comment";
-import Secondcomment from "../components/Secondcomment";
+
 import Related_posts from "../components/Related_posts";
 import Moreauthor from "../components/Moreauthor";
 

@@ -1,16 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import Helmet from "../components/Helmet";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import { TextField } from "@mui/material";
-
+import { TextField, IconButton, Alert } from "@mui/material";
 import { Button, Typography } from "@mui/material";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import CloseIcon from "@mui/icons-material/Close";
+import Snackbar from "@mui/material/Snackbar";
+const Login = (props) => {
+  // ------------------------------------------- call api -------------------------
+  const [open, Setopen] = useState(false);
+  const [submit, Setsubmited] = useState(false);
+  const [field, setField] = useState({});
+  const onChangeHandler = (e) => {
+    setField({ ...field, [e.target.name]: e.target.value });
+  };
+  console.log("email and pass", field);
 
-const Login = () => {
+  // call api o login
+  const handleSubmit = async () => {
+    try {
+      let token = await axios({
+        method: "POST",
+        url: "http://localhost:3000/auth/login",
+        data: { email: field.email, password: field.password },
+      });
+      localStorage.setItem("accessToken", token.data.token);
+      console.log("tokens", token.data.token);
+
+      if ((token.data.token = true)) {
+        Setsubmited(true);
+        console.log("isSubmited");
+      }
+    } catch (err) {
+      
+      if (err.message != null){
+        Setopen(true);
+        console.log("error", err.message)
+      }
+      
+    }
+  };
+
+  if (submit === true) {
+    props.history.push("/");
+    console.log("props.history");
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    Setopen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        UNDO
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
+
   return (
     <Helmet title="Login">
       <div className="main_frame_login">
@@ -107,6 +170,9 @@ const Login = () => {
                     className="inputtextcricle"
                     fullWidth
                     placeholder="chauhoaivu111@gmail.com"
+                    onChange={onChangeHandler}
+                    value={field.email}
+                    name="email"
                   ></TextField>
 
                   <div
@@ -152,16 +218,31 @@ const Login = () => {
                     sx={{ display: "block", marginBottom: "30px" }}
                     className="inputtextcricle"
                     fullWidth
+                    onChange={onChangeHandler}
+                    name="password"
+                    value={field.password}
                   ></TextField>
 
                   <Button
-                  
                     className="button_login"
                     fullWidth
+                    onClick={handleSubmit}
                   >
                     Continue
                   </Button>
-
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={2000}
+                    action={action}
+                    onClose={handleClose}
+                    // message="email or password incorrect"
+                    // sx={{color: "red", width: "300px"}}
+                  >
+                    <Alert onClose={handleClose} severity="error" sx={{color: "red", width: "300px"}}>
+                      email or password incorrect
+                    </Alert>
+                   
+                  </Snackbar>
                   <Typography
                     sx={{
                       textAlign: "center",

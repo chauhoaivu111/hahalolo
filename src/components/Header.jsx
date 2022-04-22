@@ -4,19 +4,19 @@ import {
   Button,
   IconButton,
   Drawer,
-  MenuItem,
+
   Typography,
-  Menu,
+
   MenuList,
   Popper,
   TextField,
   List,
-  ListSubheader,
+  
   ListItemButton,
   ListItemIcon,
  
 
-  Box,
+
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -191,9 +191,6 @@ const Header = () => {
   }, []);
 
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   // show toolbar for desktop______________________________________________________________________________________________________
   const displayDesktop = () => {

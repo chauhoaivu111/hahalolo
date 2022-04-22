@@ -1,40 +1,8 @@
 import React from "react";
-import { useState } from "react";
 
-import Helmet from "../components/Helmet";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import avt from "../asset/avatar.jpg";
+import { Button, Typography } from "@mui/material";
 
-import {
-  Button,
-  IconButton,
-  LinearProgress,
-  Typography,
-  Popper,
-  MenuItem,
-  MenuList,
-} from "@mui/material";
-import useWindowScrollPositions from "../hooks/useWindowScrollPositions";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import BookmarkAddedOutlinedIcon from "@mui/icons-material/BookmarkAddedOutlined";
-import im from "../asset/background.png";
-import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
-import Instagram from "@mui/icons-material/Instagram";
-import YouTube from "@mui/icons-material/YouTube";
-import Twitter from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import MarkChatUnreadOutlinedIcon from "@mui/icons-material/MarkChatUnreadOutlined";
-import HideSourceIcon from "@mui/icons-material/HideSource";
-import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
-import G from "../components/Grid";
 import { Divider } from "@mui/material";
-
 
 const Body = () => {
   return (
@@ -77,10 +45,7 @@ const Body = () => {
             marginBottom: "30px",
           }}
         >
-          <Typography
-            className="content_body1"
-            
-          >
+          <Typography className="content_body1">
             "Typography is pretty important if you don't want your stuff to look
             like trash. Make it good then it won't be bad."
           </Typography>

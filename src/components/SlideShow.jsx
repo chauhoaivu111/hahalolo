@@ -2,11 +2,6 @@ import { Avatar, IconButton, Paper, Typography } from "@mui/material";
 
 import React from "react";
 import Slider from "react-slick";
-import img1 from "../asset/avatar.jpg";
-import img2 from "../asset/Kevin_De_Bruyne.jpg";
-import img3 from "../asset/Naymar-and-Nike-Split.jpg";
-import img4 from "../asset/Kylian_Mbappe.jpg";
-import img5 from "../asset/Lionel_Messi.jpg";
 
 import LeftArrow from "../asset/left-arrow.svg";
 import RightArrow from "../asset/right-arrow.svg";

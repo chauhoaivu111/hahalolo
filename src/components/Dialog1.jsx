@@ -1,44 +1,11 @@
 import React from "react";
-import { useState } from "react";
 
 import Helmet from "./Helmet";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import avt from "../asset/avatar.jpg";
 
-import {
-  Button,
-  IconButton,
-  LinearProgress,
-  Typography,
-  Popper,
-  MenuItem,
-  MenuList,
-} from "@mui/material";
-import useWindowScrollPositions from "../hooks/useWindowScrollPositions";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import BookmarkAddedOutlinedIcon from "@mui/icons-material/BookmarkAddedOutlined";
-import im from "../asset/background.png";
-import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
-import Instagram from "@mui/icons-material/Instagram";
-import YouTube from "@mui/icons-material/YouTube";
-import Twitter from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import MarkChatUnreadOutlinedIcon from "@mui/icons-material/MarkChatUnreadOutlined";
-import HideSourceIcon from "@mui/icons-material/HideSource";
-import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
+import { Button, IconButton, Typography } from "@mui/material";
+
 import G from "./Grid";
-import { Divider } from "@mui/material";
-import img1 from "../asset/avatar.jpg";
-import img2 from "../asset/Kevin_De_Bruyne.jpg";
-import img3 from "../asset/Naymar-and-Nike-Split.jpg";
-import img4 from "../asset/Kylian_Mbappe.jpg";
-import img5 from "../asset/Lionel_Messi.jpg";
+
 import img6 from "../asset/Home1.jpg";
 import img12 from "../asset/img12.webp";
 import img13 from "../asset/img13.webp";
@@ -63,16 +30,16 @@ import img31 from "../asset/img31.jpg";
 import img32 from "../asset/img32.jpg";
 import img33 from "../asset/img33.png";
 import img34 from "../asset/img34.jpg";
-import img11 from "../asset/img11.png"
-import TextareaAutosize from "@mui/material/TextareaAutosize";
+import img11 from "../asset/img11.png";
+
 import PropTypes from "prop-types";
 
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CloseIcon from "@mui/icons-material/Close";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -88,7 +55,6 @@ const BootstrapDialogTitle = (props) => {
   const { children, onClose, ...other } = props;
 
   return (
-    
     <DialogTitle sx={{ m: 0, p: 2 }} {...other} className="frame_dialog">
       {onClose ? (
         <IconButton
@@ -126,22 +92,25 @@ const Dialog1 = () => {
   };
   return (
     <Helmet title="Home">
-      <div >
-        <Button sx={{textTransform:"capitalize",borderRadius:"20px",height:"50px"}} variant="outlined" onClick={handleClickOpen}>
-          Other Categories <KeyboardArrowDownIcon/>
+      <div>
+        <Button
+          sx={{
+            textTransform: "capitalize",
+            borderRadius: "20px",
+            height: "50px",
+          }}
+          variant="outlined"
+          onClick={handleClickOpen}
+        >
+          Other Categories <KeyboardArrowDownIcon />
         </Button>
         <BootstrapDialog
           PaperProps={{
-           
-            className:"frame_paper_dialog"
-          }
-        
-         
-        }
+            className: "frame_paper_dialog",
+          }}
           onClose={handleClose}
           aria-labelledby="customized-dialog-title"
           open={open}
-         
         >
           <BootstrapDialogTitle
             id="customized-dialog-title"
@@ -155,346 +124,256 @@ const Dialog1 = () => {
             <G col={5} smCol={1} mdCol={2}>
               <div className="frame_each_element_dialog">
                 <div>
-                  <img
-                    src={img12}
-                    className="img_dialog"
-                  />
+                  <img src={img12} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Authors</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Authors</Typography>
                   <Typography>17 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog">
                 <div>
-                  <img
-                    src={img13}
-                    className="img_dialog"
-                  />
+                  <img src={img13} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">School</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">School</Typography>
                   <Typography>10 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog">
                 <div>
-                  <img
-                    src={img14}
-                    className="img_dialog"
-                  />
+                  <img src={img14} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Flower</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Flower</Typography>
                   <Typography>27 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog">
                 <div>
-                  <img
-                    src={img15}
-                    
-                    className="img_dialog"
-                  />
+                  <img src={img15} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Car</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Car</Typography>
                   <Typography>24 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog">
                 <div>
-                  <img
-                    src={img16}
-                    className="img_dialog"
-                    
-                  />
+                  <img src={img16} className="img_dialog" />
                 </div>
-                <div className="frame_main_title" style={{marginRight:"-10px"}}>
-                  <Typography  className ="main_title_dialog">Video</Typography>
+                <div
+                  className="frame_main_title"
+                  style={{ marginRight: "-10px" }}
+                >
+                  <Typography className="main_title_dialog">Video</Typography>
                   <Typography>18 article</Typography>
                 </div>
-         
               </div>
-
-
 
               {/* ---------------------------------- */}
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img17}
-                    className="img_dialog"
-                  />
+                  <img src={img17} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Esports</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Esports</Typography>
                   <Typography>20 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img18}
-                    className="img_dialog"
-                  />
+                  <img src={img18} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">News</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">News</Typography>
                   <Typography>1 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img19}
-                    className="img_dialog"
-                  />
+                  <img src={img19} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Beverage</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">
+                    Beverage
+                  </Typography>
                   <Typography>4 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img20}
-                    
-                    className="img_dialog"
-                  />
+                  <img src={img20} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Beauty </Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Beauty </Typography>
                   <Typography>11 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img21}
-                    className="img_dialog"
-                    
-                  />
+                  <img src={img21} className="img_dialog" />
                 </div>
-                <div className="frame_main_title" style={{marginRight:"-10px"}}>
-                  <Typography  className ="main_title_dialog">Automotive</Typography>
+                <div
+                  className="frame_main_title"
+                  style={{ marginRight: "-10px" }}
+                >
+                  <Typography className="main_title_dialog">
+                    Automotive
+                  </Typography>
                   <Typography>35 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img22}
-                    className="img_dialog"
-                  />
+                  <img src={img22} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Tools</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Tools</Typography>
                   <Typography>12 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img23}
-                    className="img_dialog"
-                  />
+                  <img src={img23} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Game</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Game</Typography>
                   <Typography>29 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img24}
-                    className="img_dialog"
-                  />
+                  <img src={img24} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Design</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Design</Typography>
                   <Typography>9 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img25}
-                    
-                    className="img_dialog"
-                  />
+                  <img src={img25} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Sports</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Sports</Typography>
                   <Typography>19 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img26}
-                    className="img_dialog"
-                    
-                  />
+                  <img src={img26} className="img_dialog" />
                 </div>
-                <div className="frame_main_title" style={{marginRight:"-10px"}}>
-                  <Typography  className ="main_title_dialog">Life stle</Typography>
+                <div
+                  className="frame_main_title"
+                  style={{ marginRight: "-10px" }}
+                >
+                  <Typography className="main_title_dialog">
+                    Life stle
+                  </Typography>
                   <Typography>3 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img27}
-                    className="img_dialog"
-                  />
+                  <img src={img27} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Outdoors</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">
+                    Outdoors
+                  </Typography>
                   <Typography>5 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img28}
-                    className="img_dialog"
-                  />
+                  <img src={img28} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Books</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Books</Typography>
                   <Typography>24 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img29}
-                    className="img_dialog"
-                  />
+                  <img src={img29} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Jewelry</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Jewelry</Typography>
                   <Typography>17 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img30}
-                    
-                    className="img_dialog"
-                  />
+                  <img src={img30} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Toys</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Toys</Typography>
                   <Typography>30 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img31}
-                    className="img_dialog"
-                    
-                  />
+                  <img src={img31} className="img_dialog" />
                 </div>
-                <div className="frame_main_title" style={{marginRight:"-10px"}}>
-                  <Typography  className ="main_title_dialog">Company</Typography>
+                <div
+                  className="frame_main_title"
+                  style={{ marginRight: "-10px" }}
+                >
+                  <Typography className="main_title_dialog">Company</Typography>
                   <Typography>11 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img32}
-                    className="img_dialog"
-                  />
+                  <img src={img32} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Health</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Health</Typography>
                   <Typography>22 article</Typography>
                 </div>
-         
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img33}
-                    className="img_dialog"
-                  />
+                  <img src={img33} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Store</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Store</Typography>
                   <Typography>33 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img34}
-                    className="img_dialog"
-                  />
+                  <img src={img34} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Music</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">Music</Typography>
                   <Typography>9 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img11}
-                    
-                    className="img_dialog"
-                  />
+                  <img src={img11} className="img_dialog" />
                 </div>
-                <div  className="frame_main_title">
-                  <Typography className ="main_title_dialog">Industrial</Typography>
+                <div className="frame_main_title">
+                  <Typography className="main_title_dialog">
+                    Industrial
+                  </Typography>
                   <Typography>29 article</Typography>
                 </div>
-                
               </div>
               <div className="frame_each_element_dialog1">
                 <div>
-                  <img
-                    src={img6}
-                    className="img_dialog"
-                    
-                  />
+                  <img src={img6} className="img_dialog" />
                 </div>
-                <div className="frame_main_title" style={{marginRight:"-10px"}}>
-                  <Typography  className ="main_title_dialog">Garden</Typography>
+                <div
+                  className="frame_main_title"
+                  style={{ marginRight: "-10px" }}
+                >
+                  <Typography className="main_title_dialog">Garden</Typography>
                   <Typography>13 article</Typography>
                 </div>
-         
               </div>
-             
-             
-              
             </G>
           </DialogContent>
           {/* <DialogActions >
